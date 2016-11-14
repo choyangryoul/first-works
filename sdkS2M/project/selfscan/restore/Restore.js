@@ -1,0 +1,1 @@
+angular.module('S2M.Restore', [])

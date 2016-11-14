@@ -1,0 +1,583 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+@media screen and (max-width:800px) {
+  html {
+    
+  }
+}
+
+body {
+	padding-top: 60px;
+	font-family: "Nanum Gothic", "맑은 고딕", "Malgun Gothic", "돋움", dotum, serif;
+	/* background-image: url('/img/background003.jpg'); */
+	/*background: linear-gradient(-180deg, #a9dba9, #777777) fixed;*/
+	background-color: #b3c4dd;
+}
+
+.userGuide {
+	text-align: right !important;
+	margin-top: 7px;
+	margin-left: 150px;
+	padding: 2px;
+	font-weight: bold;
+	font-size: 1.3em;
+	color: gray !important;
+    vertical-align: middle !important;
+}
+
+.infoPageText {
+	font-size: 0.8em;
+	color: #f58b4e;
+	font-weight: bold;
+}
+
+.totaloptionText {
+	padding-left: 10px;
+	font-size: 0.9em;
+	font-weight: bold !important;
+}
+
+.warningCost{
+	font-size: 0.8em;
+	color: #f86d1a;
+	padding-left: 10px;
+}
+
+.hlogo {
+	margin-top: 7px;
+	vertical-align: middle !important;
+}
+
+.footText {
+	font-size: 1.0em;
+	padding-left: 10px;
+	color: #f58b4e;
+}
+
+.warntextword {
+	display: block;
+	margin-left: 405px;
+	font-size: 1.4em;
+	font-weight: bolder;
+	color: #f86d1a;
+}
+
+.qOption {
+	background-color: #f58b4e; 
+	margin-left: 160px;
+	margin-bottom: 10px;
+	padding: 4px;
+	font-size: 0.8em;
+	color: white;
+	border: 1px solid #eb0c00;
+	border-radius: 0.2em;
+}
+
+.jumbotron {
+	background: #7F92AA;
+	border-bottom: 1px solid #354358;
+	border-radius: 5px;
+	color: #36383C;
+	text-shadow: 0 1px 0 #FFF;
+	box-shadow: 0 0 3px #000;
+}
+
+.confirmButton {
+	width: 100%;
+}
+
+table {
+	background-color: #FFFFFF;
+	font-size: 15px;
+	table-layout: fixed;
+	word-break: break-all;
+	border-collapse: collapse;
+    border-spacing: 0;
+    font-weight: 700;
+    color: #838386;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+
+.main table {
+	width: 100%;
+	padding: 2px;
+}
+
+thead {
+	text-align: center!important;
+	background: rgb(238,238,238); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(238,238,238,1) 1%, rgba(204,204,204,1) 48%, rgba(238,238,238,1) 99%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(238,238,238,1) 1%,rgba(204,204,204,1) 48%,rgba(238,238,238,1) 99%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(238,238,238,1) 1%,rgba(204,204,204,1) 48%,rgba(238,238,238,1) 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#eeeeee',GradientType=0 );
+}
+
+input::-ms-clear,
+input::-ms-reveal {display: none; width : 0; height: 0;}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration { display: none; }
+
+tbody {
+	height: auto;
+	color: #707070;
+}
+
+.mainTop {
+	text-align: left;
+}
+
+
+.curDate {
+	text-align: right;
+	font-size: 1.2em;
+	color: #707070;
+}
+
+.inputUser {
+	margin-bottom: 10px;
+}
+
+.btnUser {
+	margin-top: 20px;
+}
+
+.sidebar {
+  position: fixed;
+  top: 51px;
+  bottom: 3;
+  left: 3;
+  display: auto;
+  z-index: 1000;
+  margin: 10px;
+  padding: 7px;
+  overflow-x: auto;
+  overflow-y: auto;
+  background-color: #dddddd;
+  border: 3px solid #f89406;
+  border-radius: 5px;
+}
+
+.resultTable {
+
+}
+
+.checkbox {
+	margin-top: 50px;
+	border: 10px solid red;
+}
+
+/** sidebar height 조절 **/
+.pricePanel { 
+	font: bold;
+	font-size: 30px;
+	height: 200px;
+	margin-top: 10px;
+	padding: 5px;
+	border: 1px solid #802420;
+}
+
+.submitBtn {
+	overflow: auto;
+	width: auto;
+	height: auto;
+	margin-top: 10px;
+	padding: 1px;
+	font-size: 1.1em;
+
+}
+
+
+.optionBox {
+	font-size: 1em;
+	width: auto;
+	margin-top: 5px;
+	background-color: #cccccc;
+	border: 1px solid #a47e3c;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.restoreBtn {
+	font-size: 14px;
+	text-align: center;
+}
+
+.restoreBox {
+	background-color: #e1e1e8;
+	border: 1px solid blue;
+	width: 323px;
+	padding: 3px;
+}
+
+.restoreTbl {
+	font-size: 1.1em;
+	border: 1px solid gray;
+	text-align: left;
+}
+
+.restoreTbl>tbody>tr:hover>td, .restoreTbl>tbody>tr:hover>th {
+  background-color: #DFF0D8;
+  color: #707070;
+}
+
+.topbox {
+	margin: 5px;
+	border: 1px solid green;
+}
+
+.optionPanel {
+	text-align: center;
+}
+
+
+.optionDisabled {
+	position: relative;
+	left: -2000px;
+	visibility: none;
+}
+
+
+.restoreDisabled {
+	position: relative;
+	top: -1000px;
+}
+
+.textPanelTop {
+	color: #FFFFFF;
+	font-size: 1.2em;
+	padding-bottom: 20px;
+}
+
+.panel-heading {
+	background-color: #555555;
+	height: 40px;
+	text-align: center;
+}
+
+.panel-body {
+	background-color: #d6e9c6;
+}
+
+.textPanel {
+	font-size: 1.1em;
+	padding: 5px;
+	border: 0.5px solid #1f6377;
+	background-color: #d6e9c6;
+	border-radius: 5px;
+}
+
+.isbn {
+	float: right;
+	padding-bottom: 3px;
+}
+
+.inlineString {
+	display: block;
+	border: 1px solid black;
+}
+
+.booklistmiddleLeft, .booklistmiddleRight {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+
+/* CLEARFIX */
+.booklistGroupbox::after {
+	content: "";
+	display: block;
+	clear: both;
+	border: 20px solid #25ad8b;
+}
+
+.booklistmiddleLeft {
+	float: left;
+	width: 30%;
+	border: 1px solid blue;
+	padding: 5px;
+	height: 200px;
+}
+
+.booklistmiddleRight {
+	float: right;
+	width: 70%;
+	border: 1px solid red;
+	padding: 5px;
+	height: 700px;
+}
+
+.copyright {
+	display: block;
+	-webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+
+
+.testLine {
+	border-top: 1px solid #797f85;
+    border-top-color: rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.kindOfRestore {
+	background-color: #F3F3F3;
+	border: 1px solid #BBBBBB;
+}
+
+/* 레티나 ,ocr 버튼 상태 표시 */
+.optBtn {
+	opacity: 0.2;
+}
+
+.displayTable>tbody>tr:hover>td, .displayTable>tbody>tr:hover>th {
+  background-color: #DFF0D8;
+  color: #707070;
+}
+
+.totalCost {
+	font-size: 20px;
+	font-weight: 10;
+	color: black;
+	margin: 10px;
+	padding: 5px;
+	height: 30px;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e2e2e2+0,dbdbdb+50,d1d1d1+51,fefefe+100;Grey+Gloss+%231 */
+	background: rgb(226,226,226); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe',GradientType=0 ); /* IE6-9 */
+}
+
+/* User Checkin Form */
+
+
+.pcname {
+	display: block;
+	margin-top: 0px;
+	color: white;
+	font-size: 1.5em;
+}
+
+
+.setEditColor {
+	border: 1px solid red;
+	background-color: yellow;
+}
+
+.editRowColor {
+	background-color: red;
+}
+
+.center {
+	text-align: center!important;
+	font-weight: bold;
+	font-size: 1.1em;
+	color: #595959;
+}
+
+.tblBottom {
+	position: fixed;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	padding-top: 4px;
+	padding-left: 830px;
+}
+
+
+/* BOOTSTRP table-striped 보다 우선순위가 빠르게 지정 */
+table.table.table-striped tr.selectedColor td {
+    background-color: #2f3743;
+    opacity: .9; 
+  	cursor: not-allowed;
+
+}
+
+.disabled {
+	visibility: none;
+}
+
+.is-grey-true { background-color: #ccc; }
+.error { background-color: red; }
+
+/* make our pages be full width and full height */
+/* positioned absolutely so that the pages can overlap each other as they enter and leave */
+.page        {
+    bottom:0; 
+    top:0;  
+    width:100%; 
+}
+
+/* PAGES (specific colors for each page)
+============================================================================= */
+.page-home      { background:#00D0BC; color:#00907c; }
+.page-booklist     { background:#E59400; color:#a55400; }
+
+
+/* ANIMATIONS
+============================================================================= */
+
+/* leaving animations ----------------------------------------- */
+/* rotate and fall */
+@keyframes rotateFall {
+    0%      { transform: rotateZ(0deg); }
+    20%     { transform: rotateZ(10deg); animation-timing-function: ease-out; }
+    40%     { transform: rotateZ(17deg); }
+    60%     { transform: rotateZ(16deg); }
+    100%    { transform: translateY(100%) rotateZ(17deg); }
+}
+
+/* slide in from the bottom */
+@keyframes page-animation-enter {
+	from    {
+		transform:translateX(100%);
+	}
+    to      { 
+    	transform: translateX(0); 
+    }
+}
+
+/* rotate out newspaper */
+@keyframes rotateOutNewspaper {
+    to      { transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
+}
+
+/* entering animations --------------------------------------- */
+/* scale up */
+@keyframes scaleUp {
+    from    { opacity: 0.3; -webkit-transform: scale(0.8); }
+}
+
+/* slide in from the right */
+@keyframes slideInRight {
+    from    { transform:translateX(100%); }
+    to      { transform: translateX(0); }
+}
+
+/* slide in from the bottom */
+@keyframes slideInUp {
+    from    { transform:translateY(100%); }
+    to      { transform: translateY(0); }
+}
+
+.ng-enter  { animation: scaleUp 0.3s both ease-in; z-index: 8888; }
+.ng-leave  { animation: slideOutLeft 0.01s both ease-in; z-index: 9999; }
+
+
+.ng-enter       { z-index: 8888; }
+.ng-leave       { z-index: 9999; }
+
+/* page specific animations ------------------------ */
+
+/* home -------------------------- */
+/*.page-home.ng-enter         { animation: scaleUp 0.5s both ease-in; }
+.page-home.ng-leave         { transform-origin: 0% 0%; animation: rotateFall 1s both ease-in; }*/
+
+/* booklist ------------------------ */
+.my-page-animation.ng-enter, .my-page-animation.ng-leave {
+	-webkit-transition: 2s linear all;
+	-moz-transition: 2s linear all;
+	-o-transition: 2s linear all;
+ 	transition: 2s linear all; 
+}
+
+.my-page-animation.ng-enter {
+	transform:translateX(0);
+}
+.my-page-animation.ng-enter.ng-enter-active {
+	transform: translateX(100%);
+}
+
+.my-page-animation.ng-leave {
+	transform:translateX(100%);
+}
+.my-page-animation.ng-leave.ng-leave-active {
+	transform: translateX(0);
+}
+
+.inform {
+	width: 550px;
+	height: 100px;
+	padding: 10px;
+	margin-top: 0px;
+	margin-left: 400px;
+	margin-right: 100px;
+	background-color: #b3c4dd;
+	white-space: pre-line;
+	text-align: center;
+}
+
+.infomText {
+	font-size: 1.7em;
+	font-weight: bold;
+	color: #4a4a4a;
+}
+
+
+/** 레티나 OCR tooltip**/
+
+/* hide tooltip */
+span.optionTooltip div {
+    display: none;
+}
+
+/* show and style tooltip */
+span.optionTooltip:hover div {
+    /* show tooltip */
+    display: block;
+    /* position relative to container div.tooltip */
+    position: absolute;
+    text-align: center;
+    top: 180px;
+    left: 5px;
+    width: 330px;
+    height: 600px;
+    bottom: 1em;
+    /* prettify */
+    padding: 0.5em;
+    color: #000000;
+    background: #f7e1b5;
+    border: 0.3em solid #ffcc33;
+    /* round the corners */
+    border-radius: 0.5em;
+    /* prevent too wide tooltip */
+    
+}
+
+    /** end tooltip **/
+
+.imgBorder {
+
+	border: 0.2em solid #398439;
+}
+
+.retiTitle {
+	font-size: 1.3em;
+	font-weight: bold;
+	color: #5e5e5e;
+
+}
+
+.retiContent {
+	padding-top: 2px;
+	font-size: 1.1em;
+	font-weight: bold;
+	color: #122b40;
+}
+
+.warnRetina {
+	display: block;
+	margin-top: 20px;
+	font-size: 1.1em;
+	font-weight: bold;
+	color: #ff6600;
+}

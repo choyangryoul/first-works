@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko" ng-app="S2M">
+<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+	<title>셀프스캔 프로그램</title>
+
+  <link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="./libs/head.load.min.js"></script> 
+  <script src="./libs/boot.js"></script>
+
+</head>
+<body ng-controller="MainCtrl">
+
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a href="" class="navbar-brand mainTop"><b>스캔 NO :  {{ pcName }}</b></a>
+      </div>
+      <div class="userGuide">
+        <button class="btn btn-warning" ng-click="testOpenDir()">표지폴더 열기</button>
+      </div>
+    </div>
+
+
+      </div>
+<!--     <a href="#/">User</a>
+    <a href="#/booklist">Booklist</a> -->
+
+  <div  class="page {{ pageClass }}">
+    <ng-view />
+  </div>
+
+
+  <div class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+    <div class="container">
+      <div class="navbar-footer">
+        <div class="hlogo">
+          <img src="img/hlogo.jpg"><span class="footText">2016 HOONMIN SCAN</span> 
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+</body>
+</html>

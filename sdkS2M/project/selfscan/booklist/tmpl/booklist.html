@@ -1,0 +1,197 @@
+<!-- BOOKLIST -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-3 sidebar" ng-class="{ optionDisabled: booklist.editCompleteFlag }">
+      <!-- Navigation Area -->
+        <form name="booklistForm">
+            
+            <div class="textPanel">
+                <div class="panel-heading">
+                    <label class="textPanelTop">도서 정보 입력</label>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="cTitle">책제목</label>
+                        <span class="isbn"><button type="button" class="btn btn-warning btn-xs" ng-click="isbnToTitle(booklist.newContent.title)"><i class="fa fa-barcode" aria-hidden="true">ISBN</i></button></span>
+                        <input type="text" class="form-control input-lg" id="cTitle" name="title" ng-model="booklist.newContent.title" />
+                    </div>
+                    <div class="form-group">
+                        <label for="page">페이지</label>
+                        <span class="qOption optionTooltip">레티나 <i class="fa fa-question-circle" aria-hidden="true"></i>
+                            <div>
+                                <span class="retiTitle">레티나</span><br><span class="retiContent">레티나 적용 전</span><br><img class="imgBorder" src="img/optorigin__edit.jpg">
+                                <br><span class="retiContent">레티나 적용 후</span><br><img class="imgBorder" src="img/retiocr__edit.jpg"><br><span class="retiContent">
+                                <span> 레티나 적용시 글씨와 이미지에 모두 적용됩니다.<br>이미지가 어두운경우 레티나를 하지 마십시오.</span><br>
+                                <span class="warnRetina"> 주의 : 의학서적중 X-ray 사진이 많은 경우 <br>레티나 적용시 이미지 판독 불가</span>
+                            </div>
+                        </span>
+                        <input type="text" class="form-control" id="page" name="page" ng-model="booklist.newContent.page" value=""  ng-keydown="booklist.inputNumberKeycode(event)" placeholder="** 마지막 페이지를 입력해주세요. **" style="IME-MODE: disabled "/>
+                        <span class="infoPageText">! 레티나, OCR을 선택하시려면 페이지를 넣어주세요<span>
+                    </div>
+                </div>
+            </div>
+            <div class="optionPanel">
+                <div id="optionItems" ng-class="{ optionDisabled: booklist.pageFlag }">
+                    <div class="optionBox">
+                        <label>
+                        <input type="checkbox" name="retina" ng-click="booklist.getSumOptionPrice()" ng-model="booklist.newContent.isRetina" /> 레티나
+                        </label>
+                    </div>
+                    <div class="optionBox">
+                        <label>
+                        <input type="checkbox" name="ocr" ng-click="booklist.getSumOptionPrice()" ng-model="booklist.newContent.isOcr" /> O C R
+                        </label>
+                    </div>
+                </div>
+                <div class="optionBox">
+                    <label>
+                        <input type="checkbox" name="checkRestore" ng-model="booklist.newContent.checkRestore" /> 복원(재본)
+                    </label>
+                </div>
+                <div class="restoreBox">
+                    <div ng-class="{ optionDisabled: !booklist.newContent.checkRestore }">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td width="6%">&nbsp;</td>
+                                    <td width="60%">복원</td>
+                                    <td width="80%">가격</td>
+                                    <td width="10%">&nbsp;</td>
+                                </tr>
+                            </thead>
+                            <tbody class="restoreTbl">
+                                <tr ng-repeat="restoretype in restoresObj">
+                                    <td></td>
+                                    <td>
+                                        <label>
+                                            <input type="radio" value="{{ restoretype.itemNo }}" ng-click="booklist.selectedRestoreType($parent.selectedRestoreItemNo)" ng-model="$parent.selectedRestoreItemNo" />&nbsp;&nbsp;
+                                            {{ restoretype.item }}
+                                        </label>
+                                    </td>
+                                    <td>
+                                        {{ restoretype.price | number }} 원
+                                    </td>
+                                    <td>&nbsp;&nbsp;</td>
+                                    
+                                </tr>
+                                
+                            </tbody>
+
+                        </table>
+                      </div>
+                  </div>             
+                <div>
+                    <input type="hidden" ng-model="booklist.newContent.id" />
+                </div>
+            </div>
+            <div class="pricePanel">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="center">옵션 가격</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td ng-if="booklist.newContent.isRetina" ng-model="calRetina"> 레티나: {{ calRetina | number }}원
+                            </td>
+                        </tr>
+                        <tr>
+                            <td ng-if="booklist.newContent.isOcr"> OCR: {{ calOcr | number }}원
+                            </td>
+                        </tr>
+                        <tr>
+                            <td ng-if="booklist.newContent.checkRestore"> 복원: {{ calRestore | number }}원
+                            </td>
+                        </tr>
+                        <tr>
+                            <td ng-if="booklist.newContent.isRetina || booklist.newContent.isOcr || booklist.newContent.checkRestore"> 옵션 합계 : {{ booklist.newContent.sumOptionPrice | number }}원 
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="submitBtn">
+                <a href="javascript:void(0);" id="addBookBtn" ng-click="saveContents()" value="책추가" class="btn btn-primary btn-lg btn-block"><i class="fa fa-plus-square-o" aria-hidden="true"> 책추가</i></a>
+            </div>
+        </form>
+
+
+      </div>
+      <div class="main">
+        <div class="table-container">
+              <div class="col-xs-8 col-xs-offset-4 col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 table-container-header">
+              <!-- Main Area -->
+              
+                <table class="table table-bordered table-striped table-condensed">
+                    <thead>
+                        <tr>
+                            <th class="center" width="4%">No.</th>
+                            <th class="center" width="25%">책제목</th>
+                            <th class="center" width="5%">페이지</th>
+                            <th class="center" width="5%">레티나</th>
+                            <th class="center" width="5%">OCR</th>
+                            <th class="center" width="10%">복원</th>
+                            <th class="center" width="7%">옵션가격</th>
+                            <th class="center" width="16%">Action</th>
+                        </tr>
+                    </thead>
+                </table>
+                </div>
+                <!-- BODY -->
+                <div class="col-xs-8 col-xs-offset-4 col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 table-container-body">
+                    <table class="table table-bordered table-striped displayTable">
+                        <colgroup>
+                            <col class="center" width="4%"></col>
+                            <col class="center" width="25.4%"></col>
+                            <col class="center" width="5.3%"></col>
+                            <col class="center" width="5.1%"></col>
+                            <col class="center" width="5.1%"></col>
+                            <col class="center" width="10.2%"></col>
+                            <col class="center" width="7.2%"></col>
+                            <col class="center" width="14.8%"></col>
+                         </colgroup>
+                        <tbody id="resultTable">
+                            <tr ng-repeat="content in booklist.content" ng-class="booklist.completeIdArray[content.id]" ng-click="booklist.edit(content.id)">
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ content.title }}</td>
+                                <td>{{ content.page }}</td>
+                                <td ng-if="content.isRetina == true"><span class="label label-success">레티나</span></td>
+                                <td ng-if="content.isRetina != true || content.isRetina == undefined"><span class="label label-default optBtn">레티나</span></td>
+                                <td ng-if="content.isOcr == true"><span class="label label-success">OCR</span></td>
+                                <td ng-if="content.isOcr != true || content.isOcr == undefined"><span class="label label-default optBtn">OCR</span></td>
+                                <td>{{ content.restore.item }}</td>
+                                <td><b>{{ content.sumOptionPrice | number}}원</b></td>
+                                <td ng-if="(!booklist.addCompleteFlag)">
+                                    <button class="btn btn-primary btn-xs" ng-click="booklist.edit(content.id)"><i class="fa fa-pencil" aria-hidden="true"> 수정</i></button> | 
+                                    <button class="btn btn-danger btn-xs" ng-click="booklist.delete(content.id)"><i class="fa fa-trash-o" aria-hidden="true"> 삭제</i></button>
+                                </td>
+                                <td ng-if="(booklist.addCompleteFlag)">
+                                    <button class="btn btn-primary btn-xs" ng-disabled="booklist.disabledFlag[content.id]" ng-click="execProgram(content.id)"><i class="fa fa-print" aria-hidden="true"> 시작</i></button> |
+                                    <button class="btn btn-info btn-xs" ng-disabled="booklist.disabledFlag[content.id]" ng-click="openDir(content.id)"><i class="fa fa-folder-open-o" aria-hidden="true"> 검수</i></button> |
+                                    <button class="btn btn-success btn-xs" ng-disabled="booklist.disabledFlag[content.id]" ng-click="submitDir(content.id)"><i class="fa fa-server" aria-hidden="true"> 전송</i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-xs-8 col-xs-offset-4 col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 table-container-footer">
+                    <table class="table-condensed">
+                        <tfoot class="totalCost">
+                            <tr>
+                                <TH></TH>
+                                <TH COLSPAN="4" class="totaloptionText"><i class="fa fa-calculator" aria-hidden="true"><b> 옵션 전체 가격<span class="warningCost">(시간비용,재단비,택배비 별도)</span></b></i></TH> <TH COLSPAN="2">\ {{ totalOptCost | number }} 원</TH>
+
+                                <TH align="right"><a href="javascript:void(0);" type="button" class="btn btn-primary" ng-if="!booklist.addCompleteFlag" ng-click="setRestoreDir(booklist.content)">입력작업완료</a></TH>
+                                <TH align="right"><a href="javascript:void(0);" type="button" class="btn btn-primary" ng-if="booklist.addCompleteFlag" ng-click="finalCheck()">스캔작업완료</a></TH>
+                            </tr>
+                        </tfoot>
+                    </table>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,29 @@
+{
+  "name": "HoonminScan",
+  "main": "index.html",
+  "description": "This is a tool for selfscan user",
+  "version": "0.0.1",
+  "window": {
+    "frame": true,
+    "taskbar": true,
+    "resizable": false,
+    "width": 1350,
+    "height": 910
+  },
+  "dependencies": {
+    "angular-ui-bootstrap": "^2.1.4",
+    "express": "^4.13.4",
+    "ip": "^1.1.3",
+    "jquery": "^3.1.1",
+    "mkdirp": "^0.5.1",
+    "moment": "^2.13.0",
+    "netstats": "0.0.5",
+    "node-cmd": "^1.1.1",
+    "node-reg": "^0.2.4",
+    "port-pid": "0.0.6",
+    "protip": "^1.4.13",
+    "qtip": "0.0.4",
+    "regedit": "^2.2.6",
+    "tooltipster": "^4.1.5"
+  }
+}

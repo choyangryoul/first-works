@@ -1,0 +1,44 @@
+{
+	"option": [
+		{
+			"type": "defaultscancost",
+			"price": 6000
+		},
+		{
+			"type": "cuttingcost",
+			"price": 1000
+		},
+		{
+			"type": "retina",
+			"price": 500
+		},
+		{
+			"type": "ocr",
+			"price": 500
+		},
+		{
+			"restores": [
+				{
+					"itemNo": 0,
+					"item": "무선(본드)",
+					"price": 3000
+				},
+				{
+					"itemNo": 1,
+					"item": "레자크",
+					"price": 3000
+				},
+				{
+					"itemNo": 2,
+					"item": "스프링",
+					"price": 3000
+				},
+				{
+					"itemNo": 3,
+					"item": "양장(하드커버)",
+					"price": 5000
+				}
+			]
+		}
+	]
+}

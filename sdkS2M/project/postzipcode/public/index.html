@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko" ng-app="zipModule">
+<head>
+    <meta charset="utf-8">
+	<title>복원 요청</title>
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <!-- <script src="./restore.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    
+
+</head>
+<body ng-controller="zipCtrl">
+
+<div class="container">
+            <form class="form-horizontal" role="form">
+                <h2><b>복원 요청</b></h2>
+                <div class="form-group">
+                    <label for="name" class="col-sm-3 control-label">이름</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="name" ng-model="reName" placeholder="이름" autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="col-sm-3 control-label">전화번호</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="phone1" ng-model="reNum1" class="inputs" maxlength="3" size="5"> - 
+                        <input type="text" id="phone2" ng-model="reNum2" class="inputs" maxlength="4" size="6"> -
+                        <input type="text" id="phone3" ng-model="reNum3" class="inputs" maxlength="4" size="6">
+                    </div>
+                </div>
+                 <!-- /.form-group -->
+                <div class="form-group">
+                    <label class="control-label col-sm-3">복원 수령 선택</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" id="restore" value="택배" name="restore" ng-model="delivery.type" ng-click="getObjid()">택배
+                                </label>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="radio-inline">
+                                    <input type="radio" id="restore" value="직접수령" name="restore" ng-model="delivery.type" ng-click="getObjid()">직접수령
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- /.form-group -->
+                <hr />
+                <div class="form-group zipcode">
+                  <div ng-if="delivery.type == '택배'">
+                    <input type="text" id="sample6_postcode" ng-model="reZipcode" placeholder="우편번호" class="col-sm-4">&nbsp; 
+                    <input type="button" class="btn btn-primary btn-sm" ng-click="zipcode()" value="우편번호 찾기"><br><br>
+                    <input type="text" id="sample6_address" ng-model="reAddr" placeholder="주소" class="col-sm-5">&nbsp; 
+                    <input type="text" id="sample6_address2" ng-model="reAddrDetail" placeholder="상세주소" class="col-sm-offset-1 col-sm-5">
+                  </div>
+                </div> <!-- /.form-group -->
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-6 col-sm-offset-3">
+                        <button type="submit" class="btn btn-primary btn-block" ng-click="restoreSave()">확인</button>
+                    </div>
+                </div>
+            </form> <!-- /form -->
+        </div> <!-- ./container -->
+<!-- ************************************************************************************************ -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+    <script src="restore.js"></script>
+    <!-- /*<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></script>*/ -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</body>
+</html> 

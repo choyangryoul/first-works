@@ -1,0 +1,42 @@
+	<div class="container">
+		<div class="page-header">
+			<span class="curDate"><h3><b>{{ now }}</b></h3></span>
+		</div>
+		<form name="userForm" novalidate>
+			<div class="jumbotron col-md-6 col-md-offset-3">
+				<div class="input-group has-success inputUser">
+	  				<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+	  				<input class="form-control input-lg" type="text" ng-model="user.userName" placeholder="이름" />
+				</div>
+				<div class="input-group has-success inputEmail">
+	  				<span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+				  	<input id="emailInput" class="form-control input-lg" type="text" ng-model="user.userEmail" placeholder="이메일" />
+				</div>
+				<div class="btnUser" ng-show="(!user.adminNameFlag || !user.adminEmailFlag)" ng-hide="(user.adminNameFlag && user.adminEmailFlag)" ng-model="user.directionFlag">
+					<a href="#/booklist" type="button" id="btnSave" class="btn btn-primary btn-lg confirmButton" ng-click="setUserDir(user.userName, user.userEmail)">확인</a>
+				</div>
+				<div class="btnUser" ng-hide="(!user.adminNameFlag || !user.adminEmailFlag)" ng-show="(user.adminNameFlag && user.adminEmailFlag)" ng-model="user.directionFlag">
+					<a href="#/restore" type="button" class="btn btn-primary btn-lg confirmButton">ADMIN</a>
+				</div>
+				<div ng-show="(!user.adminNameFlag || !user.adminEmailFlag)" ng-hide="(user.adminNameFlag && user.adminEmailFlag)">
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="warntextword">
+		<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 개인파일 공유 및 유출 에관한 고객님들의 주의를 부탁드립니다 <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+	</div>
+
+	<!-- 공지 사항 -->
+	<div class="inform">
+	<div class="row">
+		<div>
+			<div class="infomText">
+				{{ officeInfom }}
+			</div>
+		</div>
+	</div>
+
+
+	</div>
+	
