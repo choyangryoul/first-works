@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html ng-app="scanApp">
+<meta charset="utf-8">
+<head>
+    <title>셀프 스캔 가이드</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+    <script>
+        angular.module("scanApp", [])
+/*            .config(['$httpProvider',function ($httpProvider) {
+                var sessionId = "{!$Api.Session_ID}";
+
+                 $httpProvider.defaults.useXDomain = true;
+                 delete $httpProvider.defaults.headers.common["X-Requested-With"];
+                 $httpProvider.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+                 $httpProvider.defaults.headers.common["Accept"] = "application/json";
+                 $httpProvider.defaults.headers.common["content-type"] = "application/json";
+                 //$httpProvider.defaults.headers.common['Authorization'] = "OAuth " + sessionId ;
+                 $httpProvider.defaults.headers.common['X-User-Agent'] = "MyClient" ;
+            }])*/
+            .controller("bookForm", function ($scope, $http) {
+                    $scope.bookInfos = [];
+                    $scope.btitle = "";
+                    $scope.pages = 0;
+                    $scope.retina = false;
+                    $scope.ocr = false;
+                    $scope.restore = false;
+                    $scope.bookCount = 0;
+                    
+                    $scope.infoArray = function () {
+
+                        $scope.bookT = {
+                            btitle: $scope.btitle,
+                            retina: $scope.retina,
+                            ocr: $scope.ocr,
+                            restore: $scope.restore,
+                            pages: $scope.pages
+                        };
+
+                        console.log("Title: " + $scope.btitle);
+                        console.log("retina: " + $scope.retina);
+                        console.log("ocr: " + $scope.ocr);
+                        console.log("restore: " + $scope.restore);
+
+                        $scope.bookInfos.push(this.bookT);
+                        $scope.bookCount = $scope.bookInfos.length;
+                        for (var i = 0; i < $scope.bookInfos.length; i++) {
+                            console.log("books ?? : " + $scope.bookInfos[i]);
+                        }
+                        console.dir($scope.bookInfos);
+
+                    }
+
+                    // POST route AJAX
+                    $scope.createInfo = function () {
+                        $http.post('/', $scope.bookInfos)
+                                .success (function (data) {
+                                    console.log(data);
+                        })
+                                .error(function (data) {
+                                    console.log('Error: ' + data);
+                                });
+                    };
+
+                    $scope.isbnBook = '';
+
+
+
+                    $scope.isbnToTitle = function(isbn) {
+                        $.ajax({
+                            type: 'GET', //방식
+                            dataType: "jsonp",
+                            url: "https://apis.daum.net/search/book?q="+isbn, /* 통신할 URL */
+                            //jsonp: "callback",
+                            data: {
+                                apikey: "0d9b1fcb098f86f12524dcff02e2c1cf",
+                                q: "다음카카오",
+                                output: "json",
+                                searchType: "title"
+
+                            }, /* 파라메터로 보낼 데이터 */
+                            //headers: {'Content-Type': 'application/json; charset=utf-8'} //헤더
+                        })
+                            .success (function(data) {
+                                for (var i=0; i<data.channel.result; i++){
+                                    var title = data.channel.item[i].title;
+                                    var author = data.channel.item[i].author_t;
+                                        console.log('결과: ' + title+ '(' + author + ')');
+                                }
+
+
+                                $scope.isbnBook = angular.toJson(data);
+
+                                //console.log('title=' + title);
+                            })
+                            .error (function (data) {
+                                console.log('err=' + data);
+                            })
+
+                            return $scope.isbnBook;
+                    }
+
+
+            });
+    </script>
+
+</head>
+
+<body ng-controller="bookForm">
+    <form>
+        <div>
+            <label>이름</label><br>
+            <input type="text" id="name" /><br>
+            <label>이메일</label><br>
+            <input type="text" id="email" />
+        </div>
+        
+        <div>
+            <label>책 제목</label>
+            <input type="text" id="bookTitle" ng-model="btitle" />
+            <label>페이지</label>
+            <input type="text" id="pages" ng-model="pages" />
+            <input type="checkbox" id="retina" ng-model="retina" />
+            <label>레티나</label>
+            <input type="checkbox" id="ocr" ng-model="ocr" />
+            <label>OCR</label>
+            <input type="checkbox" id="restore" ng-model="restore" />
+            <label>복원</label>
+        </div>
+        <div>
+            <input type="button" id="compButton" value="완료" ng-click="infoArray()" />
+            <button type="button" ng-click="isbnToTitle(9780307455871)">ISBN</button>
+        </div>
+
+    </form>
+        <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <td><span class="label label-info">{{ bookCount }}</span></td>
+            </tr>
+        </thead>
+        <thead>
+            <tr>
+                <td>제목</td>
+                <td>페이지</td>
+                <td>레티나</td>
+                <td>OCR</td>
+                <td>복원</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="bi in bookInfos">
+                <td>{{ bi.btitle }}</td>
+                <td>{{ bi.pages }}</td>
+                <td>{{ bi.retina }}</td>
+                <td>{{ bi.ocr }}</td>
+                <td>{{ bi.restore }}</td>
+                <td>{{ isbnBook.channel.item.title }}</td>
+            </tr>
+            <tr>
+                <td>{{ isbnBook }}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <button ng-click="createInfo()">POST</button>
+
+        </tfoot>
+        </table>
+
+</body>
+</html>

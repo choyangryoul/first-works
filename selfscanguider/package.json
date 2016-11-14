@@ -1,0 +1,30 @@
+{
+  "name": "scanserver",
+  "version": "1.0.0",
+  "description": "This open DAUM zipcode window.",
+  "main": "index.html",
+  "window": {
+    "frame": false,
+    "toolbar": false,
+    "width": 500,
+    "height": 300
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "CHO.Y.R",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "~1.9.3",
+    "cors": "^2.7.1",
+    "express": "~4.10.3",
+    "ip": "~1.1.3",
+    "method-override": "~2.1.2",
+    "mongoose": "~3.8.19",
+    "morgan": "~1.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.9.2"
+  }
+}
