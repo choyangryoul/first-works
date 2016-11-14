@@ -1,0 +1,62 @@
+@media print{
+	@page {
+		margin-top: 10px;
+		margin-bottom: 40px;
+	}
+
+
+	html, body {
+		font-size: 1em;
+		color: #333333;
+		margin-top: 1cm;
+		margin-right: 2cm;
+		margin-bottom: 1cm;
+		margin-left: 2cm
+		border: 1px solid white;
+        height: auto;
+        width: 100%;
+        page-break-after: avoid;
+        page-break-before: avoid;
+	}
+
+	table {
+		width: 100%;
+		border: solid #000;
+        border-width: 1px 0 0 1px;
+        page-break-inside: auto;
+	}
+
+	th, td {
+        border: solid #000;
+        border-width: 0 1px 1px 0;
+        page-break-inside: avoid;
+        page-break-after: auto;
+    }
+
+	.box2 {
+	  display: inline-block;
+	  width: 120px;
+	  height: 100px;
+	  margin: 20px;
+	  font-size: 1em;
+	  border: 1px solid black;
+	  text-align: center;
+	}
+	.main {
+		width: 100%;
+	}
+
+	.print-table {
+		border: 1px solid black;
+		font-size: 0.5em;
+		font-weight: bold;
+	}
+
+	.hidden-print {
+		display: none;
+	}
+
+	.userPrint {
+		text-align: center;
+	}
+}

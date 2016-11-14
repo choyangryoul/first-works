@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko" ng-app="Admin">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>HOONMINSCAN ADMIN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="layout" content="main"/>
+    <script src="libs/head.load.min.js"></script>
+    <script src="libs/boot.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+<body ng-controller="MainCtrl">
+    <div class="brand clearfix">
+        <a href="#" class="logo">훈민스캔 관리자</a>
+        <span class="menu-btn"><i class="fa fa-bars"></i></span>
+        <ul class="ts-profile-nav">
+            <li><a href="#/">Help</a></li>
+            <li><a href="#/setting">Settings</a></li>
+            
+        </ul>
+    </div>
+
+    <div class="ts-main-content">
+        <nav class="ts-sidebar">
+            <ul class="ts-sidebar-menu">
+                <li class="ts-label">Main</li>
+                <li class="open"><a href="#/"><i class="fa fa-dashboard"></i> 스캔정보 </a></li>
+                <li><a href="#/"><i class="fa fa-desktop"></i> 복원정보 </a></li>
+                <li><a href="#/"><i class="fa fa-pie-chart"></i> Charts</a></li>
+            </ul>
+        </nav>
+        <div class="content-wrapper">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-md-12">
+
+
+                        <div>
+                            <ng-view />
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Scripts -->
+    <script src="libs/jquery/jquery.min.js"></script>
+    <script src="libs/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="libs/jquery/jquery.dataTables.min.js"></script>
+    <script src="libs/bootstrap/js/dataTables.bootstrap.min.js"></script>
+    <script src="libs/bootstrap/js/Chart.min.js"></script>
+    <script src="libs/bootstrap/js/fileinput.js"></script>
+    <script src="libs/bootstrap/js/chartData.js"></script>
+    <script src="libs/bootstrap/js/main.js"></script>
+</body>
+</html>

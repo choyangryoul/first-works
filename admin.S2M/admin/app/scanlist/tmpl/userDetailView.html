@@ -1,0 +1,121 @@
+<!DOCTYPE>
+<html ng-app="UserDetail">
+ <head>
+ 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 	<title>사용자 상세 정보</title>
+  <script src="/libs/jquery/jquery.min.js"></script>
+ 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+ 	<link rel="stylesheet" media="screen" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/print.css" type="text/css" media="print" />
+ 	<link rel="stylesheet" media="screen" href="/libs/font-awesome/css/font-awesome.min.css" />
+ 	<link rel="stylesheet" media="screen" href="/libs/bootstrap/css/bootstrap.min.css" />
+  <script src="../../scanlist/controllers/userDetailController.js"></script>
+ </head>
+ <body ng-controller="userDetailCtrl">
+ 	<div class="container">
+  <div class="startDate"><h4 class="userInfo pull-right">사용자 : {{ userData.username }} <p> 이메일 : {{ userData.useremail }}</h4><h2>{{ userData.createdOn | datefilter }}</h2></div>
+  <div class="page-header page-heading">
+    <h2 class="pull-left">스캔 내역 ({{ userData.scanpc }})</h2>
+    <button type="button" ng-click="scanPrint()">프린트</button>
+    
+  </div>
+  
+  <table class="table forum table-striped userPrint">
+    <thead>
+      <tr>
+        <th class="cell-stat"></th>
+        <th>항 목</th>
+        <th class="cell-stat text-center" colspan="2">세부사항</th>
+        <th class="cell-stat text-center">금액</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="text-center"><i class="fa fa-clock-o fa-2x text-primary"></i></td>
+        <td class="items">
+          <h4>스캔시간<br><small>기본30분 {{ optionData[0].defaultScancost | number }}원 </small></h4>
+        </td>
+        <td class="text-center" colspan="2">시작: {{ startScanTime }}<br>종료: {{ endScanTime }}</td>
+        <td class="costStyle cell-stat-2x text-right">{{ userData.scanTimeCost | number}}원<br><small class="subTitle">{{ userData.scanDurationTime }}</small></td>
+      </tr>
+        <tr>
+        <td class="text-center"><i class="fa fa-book fa-2x text-primary"></i></td>
+        <td class="items">
+          <h4>재단 권수</a><br><small>재단 권당 {{ optionData[0].cuttingcost | number }}원</small></h4>
+        </td>
+        <form>
+          <td class="text-center" colspan="2"><input type="text" maxlength="3" size="5" ng-model="userData.bookItems.length">권</td>
+        </form>
+        <td class="costStyle cell-stat-2x text-right">{{ optionData[0].cuttingcost * userData.bookItems.length | number }}원</td>
+      </tr>
+      <tr>
+        <td class="text-center"><i class="fa fa-check fa-2x text-primary"></i></td>
+        <td class="items">
+          <h4>옵 션<br><small> 100페이지당 {{ optionData[0].ocr | number }}원</small></h4>
+        </td>
+        <td class="text-center" colspan="2">레티나: {{ retinaCost }}<br> O C R: {{ ocrCost }}</td>
+        <td class="costStyle cell-stat-2x text-right">{{ optionCost | number }}원<br><small class="subTitle">전체페이지:{{ sumPage }}</small></td>
+      </tr>
+      <tr>
+        <td class="text-center"><i class="fa fa-repeat fa-2x text-primary"></i></td>
+        <td class="items utoggleBooklist">
+          <h4> 복원내역 <i class="fa fa-caret-square-o-down" aria-hidden="true"></i><br><small></small></h4>
+        </td>
+        <td class="text-center" colspan="2">무선(본드): {{ musunCount }}<br>레자크: {{ lezakCount}}<br>스프링: {{ springCount}}<br>양장(하드커버): {{ hardcoverCount }}</td>
+        <td class="costStyle cell-stat-2x text-right">{{ userData.totalRestoreCost | number }}원</td>
+      </tr>
+      <tr>
+        <td colspan="5" class="utoggleBooklistDetailView bookDetailList">
+          <div>
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>도서명</th>
+                        <th>복원 여부</th>
+                        <th>옵션사항</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="books in userData.bookItems">
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{ books.title }}</td>
+                        <td>{{ books.restore.item}}</td>
+                        <td>{{ books.isRetina }} {{ books.isOcr }}</td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="text-center"><i class="fa fa-truck fa-2x text-primary"></i></td>
+        <td class="items">
+          <h4>수령방법<br><small>택배비: {{ optionData[0].deliveryCost | number }}원</small></h4>
+        </td>
+        <td class="text-center" colspan="2"><a href="#">{{ strRestoreType }}</a></td>
+        <td class="costStyle cell-stat-2x text-right">{{ deliveryCost | number}}원</td>
+      </tr>
+      
+    </tbody>
+  </table>
+
+  <table class="table forum table-striped">
+
+    <tbody>
+      <tr>
+        <td class="text-center"></td>
+        <td class="items">
+          <i class="fa fa-calculator fa-2x text-primary"></i>
+        </td>
+        <td class="text-left totalSum" colspan="2"><h3>합 계</h3></td>
+        <td class="costStyle cell-stat-2x text-right"> {{ userData.scanTimeCost +  (optionData[0].cuttingcost * userData.bookItems.length) + optionCost + userData.totalRestoreCost + deliveryCost | number }} 원</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+ </body>
+  
+</html>

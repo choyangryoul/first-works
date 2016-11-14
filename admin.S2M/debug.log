@@ -1,0 +1,8 @@
+[0713/144809:ERROR:registration_protocol_win.cc(53)] CreateFile: 지정된 파일을 찾을 수 없습니다. (0x2)
+[0817/222441:ERROR:registration_protocol_win.cc(53)] CreateFile: 지정된 파일을 찾을 수 없습니다. (0x2)
+[0831/222801:ERROR:registration_protocol_win.cc(53)] CreateFile: 지정된 파일을 찾을 수 없습니다. (0x2)
+[0923/014235:ERROR:registration_protocol_win.cc(53)] CreateFile: 지정된 파일을 찾을 수 없습니다. (0x2)
+[0928/184016:ERROR:registration_protocol_win.cc(53)] CreateFile: 지정된 파일을 찾을 수 없습니다. (0x2)
+[1003/215715:ERROR:registration_protocol_win.cc(53)] CreateFile: 지정된 파일을 찾을 수 없습니다. (0x2)
+[1003/215722:ERROR:registration_protocol_win.cc(53)] CreateFile: 지정된 파일을 찾을 수 없습니다. (0x2)
+[1012/225540:ERROR:registration_protocol_win.cc(53)] CreateFile: 지정된 파일을 찾을 수 없습니다. (0x2)

@@ -1,0 +1,109 @@
+<!DOCTYPE>
+<html ng-app="UserDetail">
+ <head>
+ 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 	<title>복원 상세 정보</title>
+ 	<script src="/libs/jquery/jquery.min.js"></script>
+ 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+ 	<link rel="stylesheet" media="screen" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/print.css" type="text/css" media="print" />
+ 	<link rel="stylesheet" media="screen" href="/libs/font-awesome/css/font-awesome.min.css" />
+ 	<link rel="stylesheet" media="screen" href="/libs/bootstrap/css/bootstrap.min.css" />
+  	<script src="../../scanlist/controllers/userDetailController.js"></script>
+ </head>
+ <body ng-controller="userDetailCtrl">
+ 	  <div class="tPanel">
+
+<!--       This is a restore detail contents!!!<br>
+
+      userID: {{ userData._id }}<br>
+      restoreID: {{ restoreData.restoreId }}<br> 
+      option : {{ optionData.restore[0].item }} -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3 class="page-header">복원 요청서 ( 복원요청일: {{ userData.createdOn.substring(0, 10) }} )
+                    </h3>
+                    <span class="hidden-print"><button type="button" ng-click="scanPrint()">프린트</button></span>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <h2>이름: {{ restoreData.restoreName }}</h2>
+                </div>
+            </div>
+            <div class="main">
+                <div class="testInline box2">
+                    <h4 class="text-center">무선(본드)</h4><h3 class="text-center"><b>{{ musunCount }}<b></h3>
+                </div>
+                <div class="testInline box2">
+                    <h4 class="text-center">레자크</h4><h3 class="text-center"><b>{{ lezakCount }}<b></h3>
+                </div>
+                <div class="testInline box2">
+                    <h4 class="text-center">스프링</h4><h3 class="text-center"><b>{{ springCount }}<b></h3>
+                </div>
+                <div class="testInline box2">
+                    <h4 class="text-center">양장(하드커버)</h4><h3 class="text-center"><b>{{ hardcoverCount }}<b></h3>
+                </div>
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="panel panel-default">
+                        <div class="userInfom">
+                            <div>
+                                <div>
+                                    <h4>이메일 : {{ userData.useremail }}</h4>
+                                </div>
+                                    <h4>연락처 : {{ restoreData.restorePhone }}</h4>
+                                </div>
+                                <div>
+                                    <h4><span class="restoreType">수령방법: {{ strRestoreType }}</span></h4>
+                                </div>
+                            	<div class="address">
+                            		<h4>배송주소: {{ restoreData.restoreAddress }}</h4>
+                            	</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default rtoggleBooklist">
+                        <div class="panel-heading statusBookCount">
+							<h4><b>복원도서 [전체 : {{ totalBookCount }}권 / 복원 : {{ restoreBookCount }}권]</b></h4>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body rtoggleBooklistDetailView">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover table-striped print-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>도서명</th>
+                                                    <th>복원 여부</th>
+                                                    <th>옵션사항</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="books in userData.bookItems">
+                                                    <td>{{ $index + 1 }}</td>
+                                                    <td>{{ books.title }}</td>
+                                                    <td>{{ books.restore.item}}</td>
+                                                    <td>{{ books.isRetina }} {{ books.isOcr }}</td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+ </body>
+  
+</html>
