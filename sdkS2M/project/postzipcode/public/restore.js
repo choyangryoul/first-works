@@ -4,7 +4,7 @@ myModule.controller('zipCtrl', function ($scope, $http, $timeout){
     
     $scope.scanpc = '';
     $scope.currentObjid = '';
-    var DB_URL = 'http://192.168.0.34:47751';
+    var DB_URL = 'http://192.168.0.24:47751';
 
     $scope.reName = '';
     $scope.reNum1 = '';

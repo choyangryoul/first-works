@@ -54,7 +54,7 @@ angular.module('S2M.Common', [])
 		// 현 서버 url을 가져온다
     	this.getServerUrl = function() {
 
-	        var db_url = 'http://192.168.0.34:47751';
+	        var db_url = 'http://192.168.0.24:47751';
 
 	        return db_url;
     	};

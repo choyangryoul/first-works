@@ -46,7 +46,7 @@ app.controller('MainCtrl', function($scope, $http, $window, $interval, $timeout)
                 ); // DB
 
 
-                cmd.get(workingDrive + ' & cd ' + workingDrive + '\\selfscanguider & node server', function(data){
+                cmd.get(workingDrive + ' & cd ' + workingDrive + '\\Git\\first-works\\selfscanguider & node server', function(data){
                     console.log('data : ' + data);
 
                     alert('server');
